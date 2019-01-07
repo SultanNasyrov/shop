@@ -17,6 +17,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'shop.catalog',
+    'shop.cart',
+    'shop.rating',
+    'shop.recently_viewed',
+    'shop.search',
+    'shop.user_profile',
+    'shop.seo',
+    'shop.wish_list',
 ]
 
 
