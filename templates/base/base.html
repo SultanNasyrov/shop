@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    {% block meta %}
+
+    {% endblock %}
+
+
+    <style>
+        @font-face {
+         font-family: "Tagline1";
+         src: url({% static 'fonts/BebasNeue Bold.otf' %});
+        }
+        @font-face {
+         font-family: "Tagline2";
+         src: url({% static 'fonts/BebasNeue Book.otf' %});
+        }
+        @font-face {
+         font-family: "Main1";
+         src: url({% static 'fonts/PTN77F_W.woff' %});
+        }
+        @font-face {
+         font-family: "Main2";
+         src: url({% static 'fonts/PTN57F_W.woff' %});
+        }
+    </style>
+
+
+
+    <!-- bootstrap 4 -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap.min.css' %}">
+    <!-- ui_pack -->
+    <link rel="stylesheet" href="{% static 'ui_pack/css/ui_pack.css' %}">
+    <!-- base css -->
+    <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
+
+
+    {% block css %}
+
+    {% endblock %}
+
+</head>
+<body>
+
+{% block content %}
+
+{% endblock %}
+
+
+<!-- jquery -->
+<script src="{% static 'plugins/jquery.js' %}"></script>
+<!-- ajax setup -->
+<script src="{% static 'base/js/ajax_setup.js' %}"></script>
+<!-- green sock -->
+<script src="{% static 'plugins/gsap/TweenMax.min.js' %}"></script>
+<script src="{% static 'plugins/gsap/TimelineLite.min.js' %}"></script>
+<!-- ui_pack -->
+<script src="{% static 'ui_pack/js/ui_pack.js' %}"></script>
+<!-- base.js -->
+<script src="{% static 'base/js/base.js' %}"></script>
+
+
+{% block scripts %}
+
+{% endblock %}
+
+</body>
+</html>

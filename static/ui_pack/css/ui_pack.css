@@ -1,0 +1,148 @@
+.products{
+    width: 70%;
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 1rem;
+}
+
+/* COLORS */
+.colors{
+    width: 100%;
+
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 1em;
+}
+
+.color{
+    height: 200px;
+}
+
+.white{
+    color: white;
+}
+
+.grey-op60{
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.grey-op40{
+    color: rgba(0, 0, 0, 0.41);
+}
+
+.grey-bc-op60{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.grey-bc-op40{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.grey-bc-op10{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+/* PRODUCT */
+.product{
+    display: flex;
+    flex-direction: column;
+}
+
+.product a{
+    text-decoration: none;
+}
+
+.product-image-container{
+    position: relative;
+
+    overflow: hidden;
+}
+
+.product-image-caption{
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* TEXT */
+.text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pair{
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.text-tagline-bold{
+    font-family: 'Tagline1';
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 0.045em;
+}
+
+.text-tagline-light{
+    font-family: 'Tagline2';
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.045em;
+}
+
+.text-bold-upper{
+    font-family: 'Main1';
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 2em;
+}
+
+.text-light-upper{
+    font-family: 'Main2';
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.text-light-norm{
+    font-family: 'Main2';
+    font-size: 0.8em;
+    letter-spacing: 0.04em;
+}
+
+.quantity-input{
+    padding: 0.5em;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.string-field{
+    padding: 0.5em;
+
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+

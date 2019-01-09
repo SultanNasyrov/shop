@@ -1,0 +1,134 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+{% block meta %}
+    <title>User Interface Pack</title>
+{% endblock %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'ui_pack/css/ui_pack.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <h1 class="page_header_tagline">Django shop engine ui pack</h1>
+    
+    <section class="content">
+        <!-- main section -->
+        
+        <div class="cards">
+            <!-- cards container -->
+            <div class="header">
+                <!-- block header -->
+                <h2>Cards design</h2>
+            </div><!-- end block header -->
+        
+            <div class="colors">
+                <!-- color -->
+                <div class="color grey-bc-op60">
+                    <!--  -->
+                    
+                </div><!-- end  -->
+                <div class="color grey-bc-op40">
+                    <!--  -->
+                    
+                </div><!-- end  -->
+                <div class="color grey-bc-op10">
+                    <!--  -->
+                    
+                </div><!-- end  -->
+                <div class="color">
+                    <!--  -->
+                    
+                </div><!-- end  -->
+                <div class="color">
+                    <!--  -->
+                    
+                </div><!-- end  -->
+                <div class="color">
+                    <!--  -->
+                    
+                </div><!-- end  -->
+            </div><!-- end color -->
+
+            <div class="products">
+                <!--  -->
+                {% for i in 'xxxx' %}
+                    <div class="product">
+                        <!-- product instance -->
+                        <a class="detail-link" href="{{ product.get_absolute_url }}">
+
+                            <div class="product-image-container">
+                            <!-- product-image-container -->
+                                <img class="img-fluid product-image" src="{% static 'pexels-photo-1130626.jpeg' %}" alt="">
+
+                                <div class="product-image-caption">
+                                    <!-- image caption container -->
+                                    <span class="text-light-norm white">Смотреть >></span>
+                                </div><!-- end image caption container -->
+                            </div><!-- end product-image-container -->
+
+                            <div class="product-caption">
+                                <!-- product caption container -->
+                                <span class="text-bold-upper grey-op60">{% lorem 3 w %}</span>
+                            </div><!-- end product caption container -->
+
+                        </a>
+
+                    </div><!-- end product instance -->
+                {% endfor %}
+            </div><!-- end  -->
+            
+        </div><!-- cards container -->
+    
+        <div class="text">
+            <!-- text container -->
+            <div class="pair">
+                <!-- pair -->
+                <span class="text-tagline-bold grey-op60">{% lorem 7 w %}</span>
+                <span class="text-tagline-light grey-op40">{% lorem 7 w %}</span>
+            </div><!-- end pair -->
+
+            <div class="pair">
+                <!-- pair -->
+                <span class="text-bold-upper grey-op60">{% lorem 7 w %}</span>
+                <span class="text-light-upper grey-op40">{% lorem 10 w %}</span>
+            </div><!-- end pair -->
+
+        </div><!-- text container -->
+    
+        <div class="input">
+            <!-- imput elements block -->
+            <div>
+                <!--  -->
+                <span>Size select</span>
+                <select name="quantity" id="quantity" class="quantity-input text-light-upper grey-op60">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div><!-- end  -->
+
+            <div class="input">
+                <!--  -->
+                <span>Text input</span>
+                <input type="text" class="string-field text-light-upper grey-op60">
+            </div><!-- end  -->
+            
+        </div><!-- imput elements block -->
+    </section><!-- main sec -->
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'ui_pack/js/ui_pack.js' %}"></script>
+{% endblock %}
