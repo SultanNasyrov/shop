@@ -1,54 +1,75 @@
 from django.db import models
-
-
-from django.db import models
 from django.shortcuts import reverse
 
 
+class DisplayedProducts(models.Manager):
+    """
+    Manager for displayed products
+
+    """
+    def get_queryset(self):
+        return super().get_queryset().filter(display=True)
+
+
 class ProductCategory(models.Model):
-    """"""
-    img = models.FileField(upload_to='product_category/', blank=True, null=True, verbose_name='Image')
-    name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Name')
+    """
+    Product category
+
+    """
+    img = models.FileField(upload_to='product_category/', blank=True, null=True, verbose_name='Изображение')
+    name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Название')
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
+    def __str__(self):
+        return self.name
 
 
 class ProductSubcategory(models.Model):
-    """"""
+    """
+    Product subcategory
+
+    """
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Name')
+    name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Название')
 
+    class Meta:
+        verbose_name = 'Подкатегория'
+        verbose_name_plural = 'Подкатегории'
 
-class AdditionalCategory(models.Model):
-    """"""
-    name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Name')
-
-
-class AdditionalCategoryOption(models.Model):
-    """"""
-    additional_category = models.ForeignKey(AdditionalCategory, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Name')
+    def __str__(self):
+        return '{}: {}'.format(self.category.name, self.name)
 
 
 class ProductSize(models.Model):
     """"""
-    name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Name')
+    name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Название')
+
+    class Meta:
+        verbose_name = 'Размер'
+        verbose_name_plural = 'Размеры'
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
     """"""
-    available = models.BooleanField(default=False, verbose_name='Displayed')
+    display = models.BooleanField(default=False, verbose_name='Отображается')
     name = models.CharField(max_length=300, blank=True, null=True, verbose_name='Name')
-    category = models.ForeignKey(ProductCategory, on_delete=models.SET_NULL, blank=True, null=True,
-                                 verbose_name='Category')
-    subcategory = models.ForeignKey(ProductSubcategory, on_delete=models.SET_NULL, blank=True, null=True,
-                                    verbose_name='Subcategory')
-    size = models.ManyToManyField(ProductSize, verbose_name='Size')
-    additional_category = models.ForeignKey(AdditionalCategory, on_delete=models.SET_NULL,
-                                            null=True, blank=True, verbose_name='Tags(additional category')
-    description = models.TextField(verbose_name='Description')
+    category = models.ForeignKey(ProductSubcategory, on_delete=models.SET_NULL, blank=True,
+                                 null=True, verbose_name='Категория')
+    size = models.ManyToManyField(ProductSize, related_name='sizes', verbose_name='Размер')
+    description = models.TextField(verbose_name='Описание')
+
+    objects = models.Manager()
+    displayed = DisplayedProducts()
 
     class Meta:
-        verbose_name = 'Product'
-        verbose_name_plural = 'Products'
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
 
     def __str__(self):
         return self.name
@@ -60,8 +81,8 @@ class Product(models.Model):
 class ProductImage(models.Model):
     """"""
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images', related_query_name='images')
-    img = models.FileField(upload_to='products/', blank=True, null=True, verbose_name='Image(big)')
-    img_mini = models.FileField(upload_to='products/', blank=True, null=True, verbose_name='Image(mini)')
+    img = models.FileField(upload_to='products/', blank=True, null=True, verbose_name='Изображение(основное)')
+    img_mini = models.FileField(upload_to='products/', blank=True, null=True, verbose_name='Изображение(миниматюра)')
 
 
 
