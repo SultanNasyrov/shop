@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'shop.user_profile',
     'shop.seo',
     'shop.wish_list',
+    'shop.administration',
 ]
 
 

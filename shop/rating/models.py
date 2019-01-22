@@ -14,5 +14,11 @@ class Rating(models.Model):
     def __str__(self):
         return self.product.name
 
+    def _count_overall(self):
+        return
+
     @property
-    def overall
+    def overall(self):
+        overall_rating = self._count_overall()
+        return overall_rating
+

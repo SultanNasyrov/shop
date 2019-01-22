@@ -1,9 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 from shop.catalog.models import Product
 
 
 class RecentlyViewed(models.Model):
-    product = models.OneToOneField(Product, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='recently_viewed')
 
     class Meta:
         verbose_name = 'Recently viewed'

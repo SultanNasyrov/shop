@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Page, Keyword
+
+
+@admin.register(Keyword)
+class KeywordAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Page)
+class PageAdmin(admin.ModelAdmin):
+    pass
