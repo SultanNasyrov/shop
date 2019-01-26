@@ -29,7 +29,7 @@ class CartItem(object):
         return dictionary
 
 
-class Cart(object):
+class SessionCart(object):
 
     def __init__(self, request):
         self.session = request.session

@@ -43,7 +43,6 @@ class Product(models.Model):
     """"""
     display = models.BooleanField(default=False, verbose_name='Отображается')
     name = models.CharField(max_length=300, blank=True, null=True, verbose_name='Name')
-    category = models.ForeignKey(ProductCategory, on_delete=models.PROTECT, verbose_name='Категория')
     size = models.ManyToManyField(ProductSize, related_name='sizes', verbose_name='Размер')
     price = models.PositiveSmallIntegerField(default=0, verbose_name='Цена')
     description = models.TextField(verbose_name='Описание')

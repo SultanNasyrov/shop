@@ -1,16 +1,10 @@
 from django.contrib import admin
-from .models import (Product, ProductCategory, ProductSize, ProductImage,
-                     ProductSubcategory)
-
-
-class ProductSubcategoryInline(admin.TabularInline):
-    model = ProductSubcategory
-    extra = 0
+from .models import (Product, ProductCategory, ProductSize, ProductImage)
 
 
 @admin.register(ProductCategory)
 class ProductCategoryAdmin(admin.ModelAdmin):
-    inlines = [ProductSubcategoryInline]
+    pass
 
 
 @admin.register(ProductSize)

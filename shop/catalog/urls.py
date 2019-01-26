@@ -1,7 +1,11 @@
 from django.urls import path
-from .views import test
 
+from .views import IndexView
+
+
+app_name = 'catalog'
 
 urlpatterns = [
-    path('', test)
+    path('', IndexView.as_view(), name='index'),
+
 ]

@@ -1,19 +1,16 @@
 from django.shortcuts import render
-from django.views import generic
-from shop.seo.models import Page
+
+from shop.core.views import ShopBaseView
+from .models import Banner
 
 
-class ShopView(generic.View):
+class IndexView(ShopBaseView):
 
-    def __init__(self):
-        super().__init__()
-        self.seo = Page.objects.get_or_create(name=self.page_name)
+    template_name = 'index/index.html'
+    page_name = 'Главная страница'
 
-
-class IndexView(ShopView):
-
-    def get(self, request):
-        context = {'seo': self.seo}
-        return render(request, 'index/index.html', context)
-
-
+    def change_context(self, request):
+        context = self.get_context()
+        if Banner.objects.exists():
+            context['banner'] = Banner.objects.get()
+        return context

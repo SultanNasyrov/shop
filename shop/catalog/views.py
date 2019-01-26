@@ -1,5 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
+
+from shop.core.views import ShopBaseView
+
+from .models import Product
+
+import json
 
 
-def test(request):
-    return render(request, 'ui_pack/ui_pack.html')
+class IndexView(ShopBaseView):
+    """Главная страница каталога"""
+
+    page_name = 'Каталог: главная'
+    template_name = 'catalog/index.html'
+
+    def change_context(self, request):
+        context = self.get_context()
+        return context
+
