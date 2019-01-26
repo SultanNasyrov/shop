@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 
 from shop.seo.models import Page
+from shop.catalog.models import Product
 
 
 class ShopBaseView(generic.View):
@@ -26,8 +27,12 @@ class ShopBaseView(generic.View):
     def get(self, request, *args, **kwargs):
         self.prepare_context(request, args=args, kwargs=kwargs)
         self.prepare_seo()
-        print(self.get_context())
         return render(request, self.template_name, self.get_context())
+
+
+class ShopDetailView(ShopBaseView):
+    pass
+
 
 
 
