@@ -27,22 +27,6 @@ class ProductCategory(models.Model):
         return self.name
 
 
-class ProductSubcategory(models.Model):
-    """
-    Product subcategory
-
-    """
-    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Название')
-
-    class Meta:
-        verbose_name = 'Подкатегория'
-        verbose_name_plural = 'Подкатегории'
-
-    def __str__(self):
-        return '{}: {}'.format(self.category.name, self.name)
-
-
 class ProductSize(models.Model):
     """"""
     name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Название')
@@ -59,9 +43,9 @@ class Product(models.Model):
     """"""
     display = models.BooleanField(default=False, verbose_name='Отображается')
     name = models.CharField(max_length=300, blank=True, null=True, verbose_name='Name')
-    category = models.ForeignKey(ProductSubcategory, on_delete=models.SET_NULL, blank=True,
-                                 null=True, verbose_name='Категория')
+    category = models.ForeignKey(ProductCategory, on_delete=models.PROTECT, verbose_name='Категория')
     size = models.ManyToManyField(ProductSize, related_name='sizes', verbose_name='Размер')
+    price = models.PositiveSmallIntegerField(default=0, verbose_name='Цена')
     description = models.TextField(verbose_name='Описание')
 
     objects = models.Manager()
