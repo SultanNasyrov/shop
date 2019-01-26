@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, Http404
 from django.views import generic
 
+from .cart import Cart, CartItem
 
 
 class CartIndexView(generic.TemplateView):
@@ -13,6 +14,15 @@ class CartIndexView(generic.TemplateView):
 
     def get(self, request):
         pass
+
+
+def add_item(request):
+    if request.method == 'POST' and request.is_ajax():
+        product_id, quantity = request.POST['product_id'], request.POST['quantity']
+        cart_item = CartItem(product_id, quantity)
+        return HttpResponse()
+    else:
+        raise Http404
 
 
 
