@@ -1,12 +1,15 @@
 {% extends 'base/base.html' %}
 
-
 {% block meta %}
     <title>Каталог</title>
 {% endblock %}
 
 {% block content %}
-    <h1>catalog</h1>
-    <h1>test info is</h1>
-    <h1>{{ test }}</h1>
+    {% for product in products %}
+        <div class="product">
+            <!-- product container -->
+            <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+        </div><!-- end product container -->
+    {% endfor %}
+
 {% endblock %}

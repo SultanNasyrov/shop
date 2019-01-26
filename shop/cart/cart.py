@@ -38,6 +38,17 @@ class SessionCart(object):
         else:
             request.session['cart'] = 'cart'
 
+    @property
+    def items_count(self):
+        return len(self.cart)
+
+    @property
+    def total(self):
+        total = 0
+        for item in self.cart.values():
+            total += item['price']
+        return total
+
     def save(self):
         self.session['cart'] = self.cart
 

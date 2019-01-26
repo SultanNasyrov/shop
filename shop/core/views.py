@@ -14,17 +14,19 @@ class ShopBaseView(generic.View):
     def get_context(self):
         return self._context
 
-    def change_context(self, request):
+    def prepare_context(self, request, args, kwargs):
         context = self.get_context()
         return context
 
-    def prepare_view(self, request):
-        context = self.change_context(request)
+    def prepare_seo(self):
+        context = self.get_context()
         seo, _ = Page.objects.get_or_create(name=self.page_name)
         context['seo'] = seo
 
-    def get(self, request):
-        self.prepare_view(request)
+    def get(self, request, *args, **kwargs):
+        self.prepare_context(request, args=args, kwargs=kwargs)
+        self.prepare_seo()
+        print(self.get_context())
         return render(request, self.template_name, self.get_context())
 
 

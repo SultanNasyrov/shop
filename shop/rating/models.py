@@ -19,6 +19,5 @@ class Rating(models.Model):
 
     @property
     def overall(self):
-        overall_rating = self._count_overall()
-        return overall_rating
+        return self._count_overall()
 

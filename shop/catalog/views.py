@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 
 from shop.core.views import ShopBaseView
 
@@ -13,7 +13,12 @@ class IndexView(ShopBaseView):
     page_name = 'Каталог: главная'
     template_name = 'catalog/index.html'
 
-    def change_context(self, request):
+    def prepare_context(self, request, args, kwargs):
+        print('Catalog:Index view get change context')
         context = self.get_context()
+        context['products'] = Product.displayed.all()
         return context
+
+
+
 
