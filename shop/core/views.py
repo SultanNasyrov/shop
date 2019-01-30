@@ -30,9 +30,6 @@ class ShopBaseView(generic.View):
         return render(request, self.template_name, self.get_context())
 
 
-class ShopDetailView(ShopBaseView):
-    pass
-
 
 
 

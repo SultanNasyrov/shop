@@ -1,6 +1,6 @@
 from django.db import models
 from django.shortcuts import reverse
-from django.template.defaultfilters import slugify
+from django.utils.text import slugify
 
 
 class DisplayedProducts(models.Manager):
@@ -58,12 +58,8 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
-    @property
-    def slug(self):
-        return slugify(self.title)
-
     def get_absolute_url(self):
-        return reverse('catalog:detail', kwargs={'slug': self.slug})
+        return reverse('catalog:detail', kwargs={'id': self.id})
 
 
 class ProductImage(models.Model):

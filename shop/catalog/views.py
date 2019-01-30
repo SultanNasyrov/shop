@@ -14,9 +14,19 @@ class IndexView(ShopBaseView):
     template_name = 'catalog/index.html'
 
     def prepare_context(self, request, args, kwargs):
-        print('Catalog:Index view get change context')
         context = self.get_context()
         context['products'] = Product.displayed.all()
+        return context
+
+
+class DetailView(ShopBaseView):
+
+    page_name = 'Каталог: страница товара'
+    template_name = 'catalog/detail.html'
+
+    def prepare_context(self, request, args, kwargs):
+        context = self.get_context()
+        context['product'] = Product.displayed.get(id=kwargs['id'])
         return context
 
 
