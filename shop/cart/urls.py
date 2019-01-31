@@ -1,12 +1,13 @@
 from django.urls import path
 
+from .views import CartIndexView
 from .views import add_item, clear, change_quantity, delete_item
 
 
 app_name = 'cart'
 
 urlpatterns = [
-
+    path('', CartIndexView.as_view(), name='index'),
     # ajax urls
     path('add-item', add_item, name='add_item'),
     path('clear', clear, name='clear'),

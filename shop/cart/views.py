@@ -1,18 +1,19 @@
 from django.shortcuts import render, HttpResponse, Http404
 from django.views import generic
 
-from .cart import SessionCart, CartItem
+from shop.core.views import ShopBaseView
+
+from .session_cart import SessionCart, CartItem
 
 import json
 
 
-class CartIndexView(generic.TemplateView):
-    page_seo = ''
+class CartIndexView(ShopBaseView):
+    page_name = 'Корзина: главная'
     template_name = 'cart/index.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+    def prepare_context(self, request, args, kwargs):
+        pass
 
 
 def add_item(request):

@@ -69,8 +69,3 @@ class SessionCart(object):
         self.save()
 
 
-
-
-
-
-
